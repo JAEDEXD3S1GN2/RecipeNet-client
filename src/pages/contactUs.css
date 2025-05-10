@@ -1,0 +1,133 @@
+.abt {
+  position: absolute;
+  right: 30px;
+}
+
+.acc-3 {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  height: 200px;
+  font-size: 35px;
+  font-style: normal;
+  position: absolute;
+  right: 0;
+}
+
+.intro-2 {
+  position: relative;
+  background-image: url("../assets/background.jpg");
+  background-size: cover;
+  padding-block: 100px;
+}
+
+.tng {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  height: 200px;
+  font-size: 15px;
+  font-style: normal;
+  padding-top: 40px;
+}
+
+.contact-us-cont {
+  padding-left: 80px;
+  background-color: #fafafa;
+  padding-block: 50px;
+}
+
+.contact-us-cont h2 {
+  margin-block: 30px;
+  font-family: "Satisfy", cursive;
+  font-weight: 700;
+  font-size: 30px;
+  font-style: normal;
+  color: gray;
+}
+
+.contact-us-cont span {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 30px;
+  font-style: normal;
+  color: black;
+}
+
+.soc-i {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 30px;
+  font-style: normal;
+  color: orange;
+}
+
+.soc-it {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 30px;
+  font-style: normal;
+  color: orange;
+}
+
+.soc-arr {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.soc {
+  display: flex;
+  gap: 7px;
+}
+
+.contact-us-cont h3 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 25px;
+  margin-bottom: 20px;
+  line-height: 30px;
+  font-style: normal;
+  color: black;
+}
+
+.contact-us-cont p {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 30px;
+  font-style: normal;
+  color: black;
+}
+
+@media screen and (max-width: 600px) {
+  .abt {
+    right: 60px;
+  }
+
+  .tng {
+    padding-left: 20px;
+  }
+
+  .soc-it {
+    font-size: 18px;
+  }
+
+  .contact-us-cont {
+    padding-left: 20px;
+    padding-right: 56px;
+  }
+
+  .soc span {
+    font-size: 17px;
+  }
+
+  .contact-us-cont span {
+    line-height: 35px;
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,107 @@
+.about-things {
+  padding-left: 80px;
+  background-color: #fafafa;
+  padding-block: 50px;
+}
+
+.about-things h2 {
+  margin-block: 30px;
+  font-family: "Satisfy", cursive;
+  font-weight: 700;
+  font-size: 30px;
+  font-style: normal;
+  color: gray;
+}
+
+.about-things span {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 30px;
+  font-style: normal;
+  color: black;
+}
+
+.tng-g {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  height: 200px;
+  font-size: 15px;
+  margin-right: 23px;
+  font-style: normal;
+  padding-top: 40px;
+}
+
+.Head {
+  width: 900px;
+}
+
+.who-cont {
+  width: 900px;
+}
+
+.Mission-cont {
+  width: 900px;
+}
+.offer-cont {
+  width: 900px;
+}
+.Join-cont {
+  width: 900px;
+}
+
+.acct-33 {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  height: 200px;
+  width: 160px;
+  font-size: 35px;
+  font-style: normal;
+  position: absolute;
+  right: 0;
+}
+
+.about-things li {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  line-height: 40px;
+  font-size: 21px;
+  font-style: normal;
+  color: black;
+}
+
+@media screen and (max-width: 600px) {
+  .about-things {
+    padding-left: 26px;
+  }
+
+  .about-things li {
+    font-size: 15px;
+    line-height: 35px;
+  }
+
+  .about-things span {
+    font-size: 17px;
+    line-height: 40px;
+  }
+
+  .Head {
+    width: 330px;
+  }
+
+  .who-cont {
+    width: 330px;
+  }
+
+  .Mission-cont {
+    width: 330px;
+  }
+  .offer-cont {
+    width: 330px;
+  }
+  .Join-cont {
+    width: 330px;
+  }
+}

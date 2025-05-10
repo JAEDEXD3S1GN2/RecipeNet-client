@@ -1,0 +1,44 @@
+.post-cont {
+  padding-block: 80px;
+}
+
+.tittle {
+  margin-bottom: 20px;
+}
+
+.date-details {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  font-style: normal;
+  color: gray;
+  background-color: rgb(228, 6, 43);
+  padding-block: 3px;
+  padding-inline: 6px;
+}
+
+.bap-name {
+  margin-bottom: 20px;
+}
+
+.blog-review-cont {
+  padding-block: 30px;
+  padding-inline: 25px;
+  border-radius: 10px;
+  background-color: white;
+  margin-top: 30px;
+  box-shadow: 1px 1px 4px 4px rgba(0, 0, 0, 0.322);
+}
+
+.comment-cont {
+  width: max-content;
+  border-radius: 10px;
+  margin-left: 200px;
+}
+
+@media screen and (max-width: 600px) {
+  .comment-cont {
+    width: 320px;
+    margin-left: 0px;
+  }
+}

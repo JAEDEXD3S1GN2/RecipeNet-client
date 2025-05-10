@@ -1,0 +1,32 @@
+.adim-cont {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ii {
+  margin-left: 50px;
+}
+
+.food-im {
+  align-self: center;
+  width: 280px;
+  border-radius: 15px;
+  padding-block: 20px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 30px;
+  gap: 20px;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  font-style: normal;
+  color: black;
+  background-color: rgba(255, 166, 0, 0.377);
+}
+
+.ad {
+  padding-block: 50px;
+  background-color: #fafafa;
+}
