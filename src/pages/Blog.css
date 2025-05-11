@@ -245,6 +245,16 @@
     font-size: 22px;
   }
 
+  .blog-img {
+  height: 250px;
+  width: 260px;
+}
+
+  .blo-cont {
+  width: 260px;
+}
+
+
 .blog {
   padding-left: 5px;
 }
