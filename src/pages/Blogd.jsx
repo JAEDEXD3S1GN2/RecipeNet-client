@@ -85,7 +85,7 @@ const Blogd = () => {
     <div className="post-cont">
       <div className="d-cont">
         <div className="wrapper">
-          {/* <img className="meat" src={} alt="" /> */}
+          <img className="meat" src={} alt="" /> 
         </div>
         {
           <div className="d-det">
