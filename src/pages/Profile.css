@@ -20,8 +20,8 @@
 }
 
 .user-prof {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   background-color: gray;
 }
@@ -95,11 +95,4 @@
   font-family: Roboto, sans-serif;
   font-weight: 600;
   font-size: 23px;
-}
-
-@media screen and (max-width:600px) {
-.USER-details-container {
-  flex-direction: column;
-  gap: 15px;
-}
 }
