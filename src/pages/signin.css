@@ -193,6 +193,13 @@
     background-image: url("../assets/mobilebg.jpg");
   }
 
+  .caution-cont {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+}
+
+  
   .icons i {
     color: #07001f;
     padding: 10px 10px;
