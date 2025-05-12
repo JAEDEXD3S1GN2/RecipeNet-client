@@ -18,8 +18,10 @@ const EditRecipe = () => {
   const [ingr, setIngr] = useState("");
   const [steps, setSteps] = useState("");
   const token = localStorage.getItem("token");
-  const [image, setImage] = useState("");
+  const [updatedimage, setUpdatedImage] = useState(null);
+  const [image, setImage] = useState(null);
   const userLastName = localStorage.getItem("user_lastName");
+  const [imagePreview, setImagePreview] = useState(null);
   const [foodd, setFoodd] = useState({
     food_name: "",
     description: "",
@@ -68,6 +70,11 @@ const EditRecipe = () => {
 
   const handleImage = (e) => {
     setImage(e.target.files[0]);
+    const file = e.target.files[0];
+    // setUpdatedImage(e.target.files[0]);
+    if (file) {
+      setImagePreview(URL.createObjectURL(file));
+    }
   };
 
   const handleSub = async (e) => {
@@ -208,9 +215,19 @@ const EditRecipe = () => {
               name="image"
               accept="image/*"
               onChange={handleImage}
-              value={image}
             />
             <label htmlFor="">Add an image</label>
+
+            {imagePreview && (
+              <div className="image-preview">
+                <p>Preview:</p>
+                <img
+                  src={imagePreview}
+                  alt="Preview"
+                  style={{ maxWidth: "300px", marginTop: "10px" }}
+                />
+              </div>
+            )}
           </div>
           <div className="change-vidurl">
             <input name="video_url" type="text" placeholder="Video-url" />
