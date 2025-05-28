@@ -215,7 +215,6 @@ const EditRecipe = () => {
               name="image"
               accept="image/*"
               onChange={handleImage}
-              value={image}
             />
             <label htmlFor="">Add an image</label>
 
