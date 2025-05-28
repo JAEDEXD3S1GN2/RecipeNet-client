@@ -31,11 +31,7 @@ const AddImage = () => {
   const usr = useContext(UserL);
   const userFN = useContext(User);
 
-  if (token) {
-    welc.setWelcome(true);
-    data.setIsLoggedin(true);
-    usr.setUserLN(userLastName);
-  }
+ 
 
   const headers = { Authorization: `Bearer ${token} ` };
 
@@ -54,9 +50,15 @@ const AddImage = () => {
     console.log(userData);
   };
 
-  useEffect(() => {
-    getUserData();
-  }, []);
+ useEffect(() => {
+  if (token) {
+    welc.setWelcome(true);
+    data.setIsLoggedin(true);
+    usr.setUserLN(userLastName);
+  }
+
+  GetApost();
+}, []);
 
   const handleSub = async (e) => {
     e.preventDefault();
