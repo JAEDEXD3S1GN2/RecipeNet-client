@@ -68,7 +68,7 @@ const FourthBlogArray = ({ BlogHead }) => {
                     src={
                       !blob.image_url
                         ? `${Postplaceholder}`
-                        : `${config.baseUrl}${blob.image_url}`
+                        : `${blob.image_url}`
                     }
                     alt=""
                   />
