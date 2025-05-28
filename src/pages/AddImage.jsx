@@ -159,7 +159,6 @@ const AddImage = () => {
             name="image"
             onChange={handleImage}
             accept="image/*"
-            value={repValue.image}
           />
 
           <div>
