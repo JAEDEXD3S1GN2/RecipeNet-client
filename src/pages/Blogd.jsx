@@ -85,9 +85,8 @@ const Blogd = () => {
     <div className="post-cont">
       <div className="d-cont">
         <div className="wrapper">
-          <img className="meat" src={} alt="" /> 
+{/*           <img className="meat" src={} alt="" />  */}
         </div>
-        {
           <div className="d-det">
             <div className="ini">
               <div className="bars"></div>
@@ -112,7 +111,6 @@ const Blogd = () => {
               </div>
             </div>
           </div>
-        }
       </div>
 
       <div className="comment-cont">
