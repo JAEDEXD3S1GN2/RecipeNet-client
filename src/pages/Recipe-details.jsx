@@ -31,6 +31,7 @@ import { useContext } from "react";
 import { Welcome, AppContext, UserL } from "../AppContext";
 import config from "../../config";
 import Placeholder from "../assets/Placeholder-web.jpg";
+import { StarRating, averageRate } from "../components/Rating";
 
 const Recipe = () => {
   const [search, setSearch] = useState("");
@@ -62,7 +63,7 @@ const Recipe = () => {
   const GetReviews = async () => {
     const response = await axios.get(`${config.baseUrl}/recipes/${id}/reviews`);
     console.log(response.data);
-    setReviews(response.data);
+    setReviews(Array.isArray(response.data) ? response.data : []);
   };
 
   // const getUserData = async () => {
@@ -80,24 +81,55 @@ const Recipe = () => {
 
   const sendReview = async (e) => {
     e.preventDefault();
+
+    const rating = Number(review.rating);
+    if (!Number.isInteger(rating) || rating < 1 || rating > 5) {
+      toast.error("Rating must be a whole number from 1 to 5");
+      return;
+    }
+    if (!review.description || review.description.trim().length === 0) {
+      toast.error("Please write something in your review");
+      return;
+    }
+
+    // The server keeps one review per user per recipe, so this updates it if it exists
+    const alreadyReviewed = reviews?.some((r) => r.user_id == uid);
+
     const data = {
       recipe_id: `${id}`,
-      description: `${review.description}`,
-      rate: `${review.rating}`,
+      description: review.description.trim(),
+      rate: rating,
     };
-    const sendPost = await axios.post(
-      `${config.baseUrl}/recipes/${foodd?.id}/reviews`,
-      data,
-      {
-        headers,
+
+    try {
+      const sendPost = await axios.post(
+        `${config.baseUrl}/recipes/${id}/reviews`,
+        data,
+        {
+          headers,
+        }
+      );
+
+      if (sendPost.status === 200 && !sendPost.data?.msg) {
+        toast.success(
+          alreadyReviewed
+            ? "Your review was updated"
+            : "review sent Successfully"
+        );
+        setReview({ recipe_id: `${id}`, description: "", rating: "" });
+        GetReviews();
+        GetApost();
+      } else {
+        toast.error(sendPost.data?.msg || "Could not send your review");
       }
-    );
-
-    if (sendPost.status === 200) {
-      console.log("review sent Successfully");
-      toast.success("review sent Successfully");
-
-      GetReviews();
+    } catch (err) {
+      if (err?.response?.status === 401) {
+        toast.error("Please sign in again to leave a review");
+      } else {
+        toast.error(
+          err?.response?.data?.msg || "Could not send your review, try again"
+        );
+      }
     }
   };
 
@@ -165,8 +197,14 @@ const Recipe = () => {
   const [review, setReview] = useState({
     recipe_id: `${id}`,
     description: "",
-    rate: null,
+    rating: "",
   });
+
+  // Use the server's average when it sends one, otherwise work it out from the reviews
+  const averageRating =
+    foodd?.average_rating !== undefined
+      ? foodd.average_rating
+      : averageRate(reviews);
 
   const colors = {
     Orange: "#FF8A5A",
@@ -190,16 +228,12 @@ const Recipe = () => {
               <div className="f-tiill">
                 <p>{foodd?.food_name}</p>
                 <p className="Aut">
-                  {foodd?.User.first_name} {foodd?.User.last_name}
+                  {foodd?.User?.first_name} {foodd?.User?.last_name}
                 </p>
               </div>
               <div className="star-options-cont">
                 <span className="d-stars">
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <MdOutlineStarBorder />
+                  <StarRating value={averageRating} />
                 </span>
                 <div>
                   {foodd?.user_id == uid ? (
@@ -294,9 +328,9 @@ const Recipe = () => {
                           <div>
                             <img src={profile} alt="" />
                             <span className="auth">
-                              {blob.user.first_name}
+                              {blob.user?.first_name}
                               {""} {""}
-                              {blob.user.last_name}
+                              {blob.user?.last_name}
                             </span>
                           </div>
                           <div className="auth-cont">
@@ -313,17 +347,25 @@ const Recipe = () => {
                                         onClick={async (e) => {
                                           e.preventDefault();
 
-                                          const del = await axios.delete(
-                                            `${config.baseUrl}/reviews/${blob.id}`,
-                                            {
-                                              headers,
-                                            }
-                                          );
-                                          if (del.status === 204) {
-                                            toast.success(
-                                              "Post deleted successfully"
+                                          try {
+                                            const del = await axios.delete(
+                                              `${config.baseUrl}/reviews/${blob.id}`,
+                                              {
+                                                headers,
+                                              }
                                             );
-                                            GetAllPosts();
+                                            if (del.status === 204) {
+                                              toast.success(
+                                                "Review deleted successfully"
+                                              );
+                                              GetReviews();
+                                              GetApost();
+                                            }
+                                          } catch (err) {
+                                            toast.error(
+                                              err?.response?.data?.msg ||
+                                                "Could not delete review"
+                                            );
                                           }
                                         }}
                                       >
@@ -348,11 +390,7 @@ const Recipe = () => {
                         </div>
                         <div className="review-conti">
                           <div className="stars">
-                            <FaStar />
-                            <FaStar />
-                            <FaStar />
-                            <FaStar />
-                            <MdOutlineStarBorder />
+                            <StarRating value={blob.rate} />
                           </div>
                           <div className="b-cont">{blob.description}</div>
                         </div>
