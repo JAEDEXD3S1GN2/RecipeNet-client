@@ -21,6 +21,7 @@ import "aos/dist/aos.css";
 import axios from "axios";
 import { FaArrowUp } from "react-icons/fa";
 import config from "../../config";
+import { SpatulaRating } from "./Rating";
 import Placeholder from "../assets/Placeholder-web.jpg";
 
 const Prime = () => {
@@ -213,13 +214,7 @@ const Prime = () => {
                       <p className="f-name">{food.food_name}</p>
                       <div className="spatu">
                         {" "}
-                        <span className="spatula">
-                          <TbGrillSpatula />
-                          <TbGrillSpatula />
-                          <TbGrillSpatula />
-                          <TbGrillSpatula />
-                          <TbGrillSpatula className="fade" />
-                        </span>
+                        <SpatulaRating value={food.average_rating} />
                       </div>
                     </div>
                     <div className="Auth">
@@ -261,13 +256,7 @@ const Prime = () => {
                           <p className="f-name">{food.food_name}</p>
                           <div className="spatu">
                             {" "}
-                            <span className="spatula">
-                              <TbGrillSpatula />
-                              <TbGrillSpatula />
-                              <TbGrillSpatula />
-                              <TbGrillSpatula />
-                              <TbGrillSpatula className="fade" />
-                            </span>
+                            <SpatulaRating value={food.average_rating} />
                           </div>
                         </div>
                         <div className="Auth">
