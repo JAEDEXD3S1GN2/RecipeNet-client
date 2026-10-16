@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import ThirdPrim from "../components/ThiredPrim";
 import FourthPrim from "../components/FOurthPrim";
 import config from "../../config";
+import { SpatulaRating } from "../components/Rating";
 
 const Recent = () => {
   const token = localStorage.getItem("token");
@@ -99,13 +100,7 @@ const Recent = () => {
                     <p className="f-name">{Recipe.food_name}</p>
                     <div className="spatu">
                       {" "}
-                      <span className="spatula">
-                        <TbGrillSpatula />
-                        <TbGrillSpatula />
-                        <TbGrillSpatula />
-                        <TbGrillSpatula />
-                        <TbGrillSpatula className="fade" />
-                      </span>
+                      <SpatulaRating value={Recipe.average_rating} />
                     </div>
                   </div>
                   <div className="Auth">
